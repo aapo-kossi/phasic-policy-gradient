@@ -5,8 +5,8 @@ from torch import nn
 from torch.nn import functional as F
 
 from . import torch_util as tu
-from gym3.types import Real, TensorType
-REAL = Real()
+#from gymnasium.types import Real, TensorType
+#REAL = Real()
 
 class Encoder(nn.Module):
     """
@@ -17,7 +17,7 @@ class Encoder(nn.Module):
     doesn't store any state except parameters)
     """
 
-    def __init__(self, obtype, codetype):
+    def __init__(self, obtype=None, codetype=None):
         super().__init__()
         self.obtype = obtype
         self.codetype = codetype
@@ -166,9 +166,10 @@ class ImpalaEncoder(Encoder):
         nblock=2,
         **kwargs
     ):
-        codetype = TensorType(eltype=REAL, shape=(outsize,))
-        obtype = TensorType(eltype=REAL, shape=inshape)
-        super().__init__(codetype=codetype, obtype=obtype)
+        #codetype = TensorType(eltype=REAL, shape=(outsize,))
+        #obtype = TensorType(eltype=REAL, shape=inshape)
+        #super().__init__(codetype=codetype, obtype=obtype)
+        super().__init__()
         self.cnn = ImpalaCNN(
             inshape=inshape,
             chans=chans,

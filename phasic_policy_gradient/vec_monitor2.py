@@ -2,12 +2,12 @@ import time
 from collections import deque, namedtuple
 
 import numpy as np
-import gym3
+import gymnasium as gym
 
 Episode = namedtuple("Episode", ["ret", "len", "time", "info"])
 
 
-class PostActProcessing(gym3.Wrapper):
+class PostActProcessing(gym.Wrapper):
     """
     Call process() after each action, except possibly possibly the last 
     one which you never called observe for.
@@ -38,7 +38,7 @@ class PostActProcessing(gym3.Wrapper):
 class VecMonitor2(PostActProcessing):
     def __init__(
         self,
-        venv: "(gym3.Env)",
+        venv: "(gym.Env)",
         keep_buf: "(int) how many returns/lengths/infos to keep" = 0,
         keep_sep_eps: "keep separate buffer per env" = False,
         keep_non_rolling: "keep separate buffer that must be explicitly cleared" = False,

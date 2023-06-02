@@ -2,7 +2,7 @@ import warnings
 from functools import partial
 import torch as th
 import torch.distributions as dis
-from gym3.types import Discrete, Real, TensorType
+from gymnasium.types import Discrete, Real, TensorType
 
 def _make_categorical(x, ncat, shape):
     x = x.reshape((*x.shape[:-1], *shape, ncat))
